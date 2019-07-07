@@ -1,5 +1,172 @@
 # Change Log
 
+## [v8.0.0](https://github.com/feathersjs-ecosystem/feathers-mongoose/tree/v8.0.0) (2019-07-07)
+[Full Changelog](https://github.com/feathersjs-ecosystem/feathers-mongoose/compare/v7.3.2...v8.0.0)
+
+**Closed issues:**
+
+- Change \_Id to id [\#325](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/325)
+- How to pass collation from client? [\#322](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/322)
+- Populate 2 levels deep  [\#320](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/320)
+- $populate example in docs has a typo [\#319](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/319)
+- Why is $text not whitelisted when querying? [\#318](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/318)
+- An in-range update of mongoose is breaking the build 🚨 [\#317](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/317)
+- Help with inserting subdocuments [\#316](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/316)
+- gridfs support? [\#315](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/315)
+- get object through the \_id reference [\#314](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/314)
+- Not able to receive the response in patch request when $push is used in feathersjs. [\#313](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/313)
+
+**Merged pull requests:**
+
+- Fix query merging on patch [\#330](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/330) ([daffl](https://github.com/daffl))
+- Add TypeScript definitions and upgrade tests to Feathers 4 [\#329](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/329) ([daffl](https://github.com/daffl))
+- Update all dependencies [\#327](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/327) ([daffl](https://github.com/daffl))
+- Update run-rs to the latest version 🚀 [\#312](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/312) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+
+## [v7.3.2](https://github.com/feathersjs-ecosystem/feathers-mongoose/tree/v7.3.2) (2019-03-04)
+[Full Changelog](https://github.com/feathersjs-ecosystem/feathers-mongoose/compare/v7.3.1...v7.3.2)
+
+**Closed issues:**
+
+- Invalid query parameter $and [\#309](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/309)
+- An in-range update of sinon is breaking the build 🚨 [\#308](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/308)
+- An in-range update of mongoose is breaking the build 🚨 [\#307](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/307)
+- Cannot read property 'startSession' of undefined [\#304](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/304)
+- An in-range update of mocha is breaking the build 🚨 [\#303](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/303)
+- An in-range update of mongoose is breaking the build 🚨 [\#301](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/301)
+- An in-range update of mongoose is breaking the build 🚨 [\#300](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/300)
+
+**Merged pull requests:**
+
+- Whitelist  and $and and $regex [\#311](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/311) ([daffl](https://github.com/daffl))
+- Use Mongoose directly to start a session [\#310](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/310) ([daffl](https://github.com/daffl))
+- Greenkeeper/mocha 6.0.2 [\#306](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/306) ([daffl](https://github.com/daffl))
+- Update mocha to the latest version 🚀 [\#302](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/302) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- Fix: Added test case for find transaction [\#299](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/299) ([Sharveshkumar](https://github.com/Sharveshkumar))
+
+## [v7.3.1](https://github.com/feathersjs-ecosystem/feathers-mongoose/tree/v7.3.1) (2019-01-31)
+[Full Changelog](https://github.com/feathersjs-ecosystem/feathers-mongoose/compare/v7.3.0...v7.3.1)
+
+**Closed issues:**
+
+- $and condition is not satisfied. [\#297](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/297)
+
+**Merged pull requests:**
+
+- Fix: Transaction for find and get. [\#298](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/298) ([Sharveshkumar](https://github.com/Sharveshkumar))
+
+## [v7.3.0](https://github.com/feathersjs-ecosystem/feathers-mongoose/tree/v7.3.0) (2019-01-17)
+[Full Changelog](https://github.com/feathersjs-ecosystem/feathers-mongoose/compare/v7.2.0...v7.3.0)
+
+**Closed issues:**
+
+- Conflict error for compound indexes is not correct [\#258](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/258)
+
+**Merged pull requests:**
+
+- Expose original MongoDB error following feathers-sequelize methodology [\#296](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/296) ([cdimitroulas](https://github.com/cdimitroulas))
+
+## [v7.2.0](https://github.com/feathersjs-ecosystem/feathers-mongoose/tree/v7.2.0) (2019-01-13)
+[Full Changelog](https://github.com/feathersjs-ecosystem/feathers-mongoose/compare/v7.1.3...v7.2.0)
+
+**Fixed bugs:**
+
+- unknown top level operator: $populate [\#293](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/293)
+
+**Closed issues:**
+
+- $populate as query param for create not working [\#268](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/268)
+
+**Merged pull requests:**
+
+- Fix populate usage and enable for .create [\#295](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/295) ([daffl](https://github.com/daffl))
+- Make sure ids in queries are respected [\#294](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/294) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+
+## [v7.1.3](https://github.com/feathersjs-ecosystem/feathers-mongoose/tree/v7.1.3) (2019-01-06)
+[Full Changelog](https://github.com/feathersjs-ecosystem/feathers-mongoose/compare/v7.1.2...v7.1.3)
+
+**Closed issues:**
+
+- Failed to patch with null, error: TypeError: data.map is not a function at mapIds [\#289](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/289)
+
+**Merged pull requests:**
+
+- Make sure data is never paginated [\#292](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/292) ([daffl](https://github.com/daffl))
+
+## [v7.1.2](https://github.com/feathersjs-ecosystem/feathers-mongoose/tree/v7.1.2) (2019-01-06)
+[Full Changelog](https://github.com/feathersjs-ecosystem/feathers-mongoose/compare/v7.1.1...v7.1.2)
+
+**Closed issues:**
+
+- Extra data directory included since version 7.0.0  [\#290](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/290)
+
+**Merged pull requests:**
+
+- Do not publish data directory [\#291](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/291) ([daffl](https://github.com/daffl))
+
+## [v7.1.1](https://github.com/feathersjs-ecosystem/feathers-mongoose/tree/v7.1.1) (2018-12-29)
+[Full Changelog](https://github.com/feathersjs-ecosystem/feathers-mongoose/compare/v7.1.0...v7.1.1)
+
+**Merged pull requests:**
+
+- Add default params to hook-less methods [\#288](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/288) ([daffl](https://github.com/daffl))
+
+## [v7.1.0](https://github.com/feathersjs-ecosystem/feathers-mongoose/tree/v7.1.0) (2018-12-29)
+[Full Changelog](https://github.com/feathersjs-ecosystem/feathers-mongoose/compare/v7.0.0...v7.1.0)
+
+**Closed issues:**
+
+- feathers update service cleans document [\#274](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/274)
+
+**Merged pull requests:**
+
+- Added hooks to support mongo-db transaction [\#276](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/276) ([jaiyashree](https://github.com/jaiyashree))
+
+## [v7.0.0](https://github.com/feathersjs-ecosystem/feathers-mongoose/tree/v7.0.0) (2018-12-18)
+[Full Changelog](https://github.com/feathersjs-ecosystem/feathers-mongoose/compare/v6.3.0...v7.0.0)
+
+**Implemented enhancements:**
+
+- params.query is ignored for returned data when removing a record [\#244](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/244)
+
+**Closed issues:**
+
+- An in-range update of @feathersjs/express is breaking the build 🚨 [\#284](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/284)
+- An in-range update of @feathersjs/errors is breaking the build 🚨 [\#283](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/283)
+- An in-range update of mongoose is breaking the build 🚨 [\#282](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/282)
+- An in-range update of mongoose is breaking the build 🚨 [\#278](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/278)
+- how to disable a hook in call a method? [\#277](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/277)
+- An in-range update of mongoose is breaking the build 🚨 [\#272](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/272)
+- $populate security risk [\#207](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/207)
+
+**Merged pull requests:**
+
+- Upgrade to @feathersjs/adapter-commons and latest common service features [\#286](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/286) ([daffl](https://github.com/daffl))
+- Update run-rs setup [\#285](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/285) ([daffl](https://github.com/daffl))
+- feat: add query filters additionally to id in the get hook [\#280](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/280) ([aliveghost04](https://github.com/aliveghost04))
+- Update README.md [\#279](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/279) ([einstenj](https://github.com/einstenj))
+
+## [v6.3.0](https://github.com/feathersjs-ecosystem/feathers-mongoose/tree/v6.3.0) (2018-11-27)
+[Full Changelog](https://github.com/feathersjs-ecosystem/feathers-mongoose/compare/v6.2.0...v6.3.0)
+
+**Implemented enhancements:**
+
+- Passing through collation options for case insensitive sorting [\#211](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/211)
+
+**Closed issues:**
+
+- Populating multiple paths is not supported [\#271](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/271)
+- An in-range update of @feathersjs/socketio is breaking the build 🚨 [\#267](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/267)
+- Schema validation does not run for patch requests [\#266](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/266)
+- Bug $near on version 6.1.4 not working, 6.1.3 return wrong total \( collection total, not total found \) [\#264](https://github.com/feathersjs-ecosystem/feathers-mongoose/issues/264)
+
+**Merged pull requests:**
+
+- Fix deprecation warnings and update dependencies [\#275](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/275) ([daffl](https://github.com/daffl))
+- Add missing property option in readme [\#270](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/270) ([aliveghost04](https://github.com/aliveghost04))
+- Update semistandard to the latest version 🚀 [\#269](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/269) ([greenkeeper[bot]](https://github.com/apps/greenkeeper))
+- Feat: mongo opt to return writeResult [\#261](https://github.com/feathersjs-ecosystem/feathers-mongoose/pull/261) ([54M5M17H](https://github.com/54M5M17H))
+
 ## [v6.2.0](https://github.com/feathersjs-ecosystem/feathers-mongoose/tree/v6.2.0) (2018-10-03)
 [Full Changelog](https://github.com/feathersjs-ecosystem/feathers-mongoose/compare/v6.1.4...v6.2.0)
 
