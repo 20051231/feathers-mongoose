@@ -1,8 +1,9 @@
 sudo: false
 language: node_js
-services: mongodb
 node_js:
-  - 'node'
+  - '11'
   - '8'
-  - '6'
 install: npm install
+before_script:
+  - npm run mongodb >/dev/null 2>&1 &
+  - sleep 30

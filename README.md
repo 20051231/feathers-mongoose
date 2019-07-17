@@ -47,7 +47,11 @@ __Options:__
 - `id` (*optional*, default: `'_id'`) - The name of the id field property.
 - `events` (*optional*) - A list of [custom service events](https://docs.feathersjs.com/api/events.html#custom-events) sent by this service
 - `paginate` (*optional*) - A [pagination object](https://docs.feathersjs.com/api/databases/common.html#pagination) containing a `default` and `max` page size
+- `whitelist` (*optional*) - A list of additional query parameters to allow (e..g `[ '$regex', '$populate' ]`)
+- `multi` (*optional*) - Allow `create` with arrays and `update` and `remove` with `id` `null` to change multiple items. Can be `true` for all methods or an array of allowed methods (e.g. `[ 'remove', 'create' ]`)
+- `overwrite` (*optional*, default: `true`) - Overwrite the document when update, making mongoose detect is new document and trigger default value for unspecified properties in mongoose schema.
 - `discriminators` (*optional*) - A list of mongoose models that inherit from `Model`.
+- `useEstimatedDocumentCount` (*optional*, default: `false`) - Use `estimatedDocumentCount` instead (usuall not necessary)
 
 > **Important:** To avoid odd error handling behaviour, always set `mongoose.Promise = global.Promise`. If not available already, Feathers comes with a polyfill for native Promises.
 
@@ -81,11 +85,13 @@ app.service('messages').hooks({
 
 The `mongoose` property is also useful for performing upserts on a `patch` request.  "Upserts" do an update if a matching record is found, or insert a record if there's no existing match.  The following example will create a document that matches the `data`, or if there's already a record that matches the `params.query`, that record will be updated.
 
+Using the `writeResult` mongoose option will return the write result of a `patch` operation, including the _ids of all upserted or modified documents. This can be helpful alongside the `upsert` flag, for detecting whether the outcome was a find or insert operation. More on write results is available in the [Mongo documentation](https://docs.mongodb.com/manual/reference/method/db.collection.update/#writeresult)
+
 ```js
 const data = { address: '123', identifier: 'my-identifier' }
 const params = {
   query: { address: '123' },
-  mongoose: { upsert: true }
+  mongoose: { upsert: true, writeResult: true }
 }
 app.service('address-meta').patch(null, data, params)
 ```
@@ -96,7 +102,7 @@ app.service('address-meta').patch(null, data, params)
 Here's a complete example of a Feathers server with a `messages` Mongoose service.
 
 ```
-$ npm install @feathersjs/feathers @feathersjs/errors @feathersjs/express mongoose feathers-mongoose
+$ npm install @feathersjs/feathers @feathersjs/errors @feathersjs/express @feathersjs/socketio mongoose feathers-mongoose
 ```
 
 In `message-model.js`:
@@ -181,11 +187,37 @@ For more information on querying and validation refer to the [Mongoose documenta
 
 For Mongoose, the special `$populate` query parameter can be used to allow [Mongoose query population](http://mongoosejs.com/docs/populate.html).
 
+> **Important:** `$populate` has to be whitelisted explicitly since it can expose protected fields in sub-documents (like the user password) which have to be removed manually.
+
 ```js
+const mongoose = require('feathers-mongoose');
+
+app.use('/posts', mongoose({
+  Model,
+  whitelist: [ '$populate' ]
+});
+
 app.service('posts').find({
   query: { $populate: 'user' }
 });
 ```
+
+## Error handling
+
+As of v7.3.0, the original Mongoose error can be retrieved on the server via:
+
+```js
+const { ERROR } = require('feathers-mongoose');
+
+try {
+  await app.service('posts').create({ value: 'invalid' });
+} catch(error) {
+  // error is a FeathersError
+  // Safely retrieve the original Mongoose error
+  const mongooseError = error[ERROR];
+}
+```
+
 
 ## Discriminators (Inheritance)
 
@@ -261,6 +293,81 @@ students.find({ query, collation }).then( ... );
 
 For more information on MongoDB's collation feature, visit the [collation reference page](https://docs.mongodb.com/manual/reference/collation/).
 
+
+## Mongo-DB Transaction
+
+This adapter includes support to enable database transaction to rollback the persisted records for any error occured for a api call. This requires  [Mongo-DB v4.x](https://docs.mongodb.com/manual/) installed and [replica-set](https://linode.com/docs/databases/mongodb/create-a-mongodb-replica-set/#start-replication-and-add-members) enabled.
+
+Start working with transactin enabled by adding the following lines in `app.hooks.js` or `<any-service>.hooks.js`.
+
+```js
+const TransactionManager = require('feathers-mongoose').TransactionManager;
+const isTransactionEnable = process.env.TRANSACTION_ENABLE || false;
+const skipPath = ['login'];
+
+let moduleExports = {
+  before: {
+    all: [],
+    find: [],
+    get: [],
+    create: [
+      when(isTransactionEnable, async hook =>
+        TransactionManager.beginTransaction(hook, skipPath)
+      )
+    ],
+    update: [
+      when(isTransactionEnable, async hook =>
+        TransactionManager.beginTransaction(hook, skipPath)
+      )
+    ],
+    patch: [],
+    remove: []
+  },
+
+  after: {
+    all: [],
+    find: [],
+    get: [],
+    create: [when(isTransactionEnable, TransactionManager.commitTransaction)],
+    update: [when(isTransactionEnable, TransactionManager.commitTransaction)],
+    patch: [],
+    remove: []
+  },
+
+  error: {
+    all: [],
+    find: [],
+    get: [],
+    create: [when(isTransactionEnable, TransactionManager.rollbackTransaction)],
+    update: [when(isTransactionEnable, TransactionManager.rollbackTransaction)],
+    patch: [],
+    remove: []
+  }
+};
+
+module.exports = moduleExports;
+```
+
+## Contributing
+
+This module is community maintained and open for pull requests. Features and bug fixes should contain
+
+- The bug fix / feature code
+- Tests to reproduce the bug or test the feature
+- Documentation updates (if necessary)
+
+To contribute, fork and clone the repository. To run the tests, a MongoDB v4.0.0 server is required. If you do not have a MongoDB server running you can start one with:
+
+```
+npm run mongodb
+```
+
+The command needs to stay open while running the tests with
+
+
+```
+npm test
+```
 
 ## License
 
